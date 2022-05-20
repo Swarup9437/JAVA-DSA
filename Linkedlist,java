@@ -22,8 +22,14 @@ public class Linkedlist {
         ll.addFirst(3);
         ll.addFirst(2);
         ll.addLast(6);                          
-        ll.addLast(7);                          
+        ll.addLast(7);                         
         ll.addLast(8);
+        ll.printList();
+        System.out.println(ll.getSize());
+        ll.removeFirst();
+        ll.printList();
+        System.out.println(ll.getSize());
+        ll.removeLast();
         ll.printList();
         System.out.println(ll.getSize());                          
     }
@@ -63,5 +69,34 @@ public class Linkedlist {
     }
     public int getSize() {
         return size;
+    }
+    public void removeFirst() {
+        if (head == null) {
+            System.out.print("Nothing to remove");
+        }
+        size--;
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+        head = head.next;
+    }
+
+    public void removeLast() {
+        if (head == null) {
+            System.out.print("Nothing to remove");
+        }
+        size--;
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+        Node currNode = head;
+        Node nextNode = currNode.next;
+        while (nextNode.next != null) {
+            currNode = nextNode;
+            nextNode = nextNode.next;
+        }
+        currNode.next = null;
     }
 }
